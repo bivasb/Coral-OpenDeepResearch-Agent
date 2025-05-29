@@ -1,0 +1,2 @@
+open-deep-research==0.0.14
+camel-ai[all]==0.2.40
