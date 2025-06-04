@@ -1,125 +1,96 @@
-# CAMEL Open Deep Research
+# Open Deep Research Agent
 
-A CAMEL (Conversational Agents and Machine Learning) integration of the Open Deep Research system for automated, collaboration in the Coral-Marketing-System.
+An integration of Open Deep Research for automated research in the Coral-Marketing-System.
 
 ## Overview
 
-This project creates a CAMEL based Agent with Open Deep Research's capabilities to create an automated research assistant that can:
-- Generate comprehensive research reports on any topic
-- Collaborate with other agents in a multi-agent system
-- Automatically plan, research, and compile structured reports
-- Generated report is saved in the temp folder and its path is returned by the research agent for further actions
+The Open Deep Research Agent:
+- Generates comprehensive research reports on any topic
+- Collaborates with other agents in a multi-agent system
+- Plans, researches, and compiles structured reports
+- Saves reports in `temp/` and returns the file path
 
 ## Components
 
-1. **MCP Example CAMEL Research** (`mcp_example_camel_research.py`)
-   - Implements a research agent using CAMEL framework
-   - Connects to a Coral server for agent communication
-   - Integrates OpenDeepResearch toolkit for report generation
-   - Uses GPT-4 for intelligent processing
+1. **LangChain Open Deep Research** (`langchain_open_deep_research.py`)
+   - Research agent using LangChain
+   - Connects to Coral server
+   - Uses OpenDeepResearch for report generation
+   - Employs GPT-4o-mini for processing
 
-2. **Open Deep Research Implementation** (`odr.py`)
-   - Provides the core research functionality
-   - Uses LangGraph for workflow management
-   - Implements a structured report generation pipeline
-   - Automatically saves reports to the temp directory
+2. **Open Deep Research** (`odr.py`)
+   - Core research functionality
+   - Uses LangGraph for workflow
+   - Saves structured reports in `temp/`
 
 ## Prerequisites
 
-- Python 3.10/11/12 installed
-- Access to OpenAI API (for GPT-4)
-- Coral server
+- Python 3.10, 3.11, or 3.12
+- OpenAI API key (for GPT-4o-mini)
+- Coral server at `http://localhost:5555/devmode/exampleApplication/privkey/session1/sse`
 
-## Setup Instructions
+## Setup
 
-1. **Clone Open Deep Research Repository**
+1. **Install Dependencies**
    ```bash
-   # Inside the camel-open-deep-research directory
-   git clone https://github.com/langchain-ai/open_deep_research.git
+   pip install langchain langchain-openai langgraph python-dotenv anyio
    ```
 
-2. **Install Dependencies**
+2. **Configure Environment**
    ```bash
-   pip install -r requirements.txt
+   # Create .env file in project root:
+   OPENAI_API_KEY=your_openai_api_key
    ```
 
-3. **Configure Environment**
-   ```bash
-   # Create .env file in project root and add:
-   OPENAI_API_KEY=your_openai_api_key_here
-   # Add any other required environment variables
-   ```
-
-4. **Start the Coral Server**
-   - Follow the Coral server setup instructions from the [main README](../../README.md)
-   - Ensure the server is running at `http://localhost:3001/sse`
-   - Verify the server status before proceeding
-
-[Previous sections remain the same until Running the System]
+3. **Start Coral Server**
+   - Follow [main README](../../README.md) for setup
+   - Ensure server runs at `http://localhost:5555/devmode/exampleApplication/privkey/session1/sse`
 
 ## Running the System
 
-1. **Start the Interface Agent**
+1. **Start Interface Agent**
    ```bash
-   # In the camel-open-deep-research directory
-   python mcp_example_camel_interface.py
+   python interface.py
    ```
-   The interface agent will:
-   - Connect to the Coral server
-   - Provide a command-line interface for interactions
-   - Allow you to send research requests and receive responses
+   - Connects to Coral server
+   - Provides command-line interface for research requests
 
-2. **Launch the Research Agent**
+2. **Launch Research Agent**
    ```bash
-   python mcp_example_camel_research.py
+   python langchain_open_deep_research.py
    ```
-   The agent will:
-   - Register itself as "research_agent"
-   - Connect to the Coral server
-   - Begin listening for research requests
+   - Registers as "open_deepresearch_agent"
+   - Listens for research requests
 
-3. **Launch Additional Agents (Optional)**
-   - Start any other desired communication agents
-   - Ensure proper Coral server configuration
+## Interaction
 
-## System Interaction
-
-1. **Using the Interface Agent**
-   - Once both agents are running, use the interface agent's command line
-   - Type your research requests when prompted
-   - The research agent will process your request and return the report path
-   - Reports are saved in the `temp/` directory
-
-2. **Monitor Output**
-   - Connection status in both terminal windows
-   - Agent interactions
-   - Research progress
-   - Generated report locations
+- Use interface agent's command line to send research requests
+- Research agent returns report path (saved in `temp/`)
+- Monitor terminal for connection status and report locations
 
 ## Customization
 
-The Open Deep Research system can be customized via the thread configuration in `odr.py`. To modify planning and writing models:
+Modify `odr.py` thread configuration:
 
 1. **Set Environment Variables**
    ```bash
-   OPENAI_API_KEY=your_key_here      # For GPT-4 planning
-   ANTHROPIC_API_KEY=your_key_here   # For Claude writing
+   OPENAI_API_KEY=your_key
+   ANTHROPIC_API_KEY=your_key  # Optional for Claude
    ```
 
-2. **Update Thread Configuration**
+2. **Update Configuration**
    ```python
    "planner_provider": "openai",
-   "planner_model": "gpt-4",
+   "planner_model": "gpt-4o-mini",
    "writer_provider": "anthropic",
    "writer_model": "claude-2"
    ```
 
-For more configuration options, refer to the README in the cloned 'open-deep-research' repository.
+See `open_deep_research` README for more options.
 
 ## Troubleshooting
 
-- Verify all required services are running
-- Check Coral server logs for connection issues
-- Confirm environment variables are set correctly
-- Monitor `temp/` directory for generated reports
-- Ensure open-deep-research repository is properly cloned and in the correct directory
+- Verify Coral server is running
+- Check server logs for connection issues
+- Ensure `.env` variables are set
+- Monitor `temp/` for reports
