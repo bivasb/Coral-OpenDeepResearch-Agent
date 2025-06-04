@@ -1,4 +1,4 @@
-\[Open Deep Research Agent\]
+## Open Deep Research Agent
 
 - **Responsibility**:
 The Open Deep Research agent is an open-source research assistant that automates comprehensive report generation using a graph-based workflow or multi-agent architecture.It can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs.
@@ -28,9 +28,8 @@ The Open Deep Research agent is an open-source research assistant that automates
 - **Example output**:
 
   ```
- The Google Agent Development Kit (ADK) is an innovative framework launched at Google Cloud NEXT 2025 that empowers developers to create intelligent, multi-agent systems. With a modular and open-source design, ADK supports the entire agent development lifecycle through its core functionalities: Build, Interact, Evaluate, and Deploy. Emphasizing a "code-first" approach, it allows for the creation of sophisticated agents capable of executing various tasks. This report delves into the capabilities, integrations, development process, and significance of the ADK within the Google ecosystem...
-
- (Sample too big to post, check temp folder) 
+   (Sample too big to post, check temp folder) 
+   
   ```
 - **Creator details**
   - **Name**: Suman
