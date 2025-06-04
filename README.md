@@ -1,6 +1,6 @@
 # Open Deep Research Agent
 
-An integration of Open Deep Research for automated research in the Coral-Marketing-System.
+The Open Deep Research agent is an open-source research assistant that automates comprehensive report generation using a graph-based workflow or multi-agent architecture.It can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs.
 
 ## Overview
 
@@ -67,26 +67,6 @@ The Open Deep Research Agent:
 - Use interface agent's command line to send research requests
 - Research agent returns report path (saved in `temp/`)
 - Monitor terminal for connection status and report locations
-
-## Customization
-
-Modify `odr.py` thread configuration:
-
-1. **Set Environment Variables**
-   ```bash
-   OPENAI_API_KEY=your_key
-   ANTHROPIC_API_KEY=your_key  # Optional for Claude
-   ```
-
-2. **Update Configuration**
-   ```python
-   "planner_provider": "openai",
-   "planner_model": "gpt-4o-mini",
-   "writer_provider": "anthropic",
-   "writer_model": "claude-2"
-   ```
-
-See `open_deep_research` README for more options.
 
 ## Troubleshooting
 
