@@ -5,7 +5,7 @@ import asyncio
 from dotenv import load_dotenv
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "open_deep_research/src/open_deep_research")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "open_deep_research")))
 from graph import builder
 
 load_dotenv()
@@ -56,7 +56,16 @@ class OpenDeepResearch:
         # Step 3: Get final report
         final_state = graph.get_state(thread)
         report = final_state.values.get("final_report")
-        report_path = f"temp/research_report_{uuid.uuid4()}.txt"
+
+        # Define the directory and ensure it exists
+        output_dir = "temp"
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+            print(f"Created directory: {output_dir}")
+        else:
+            print(f"Directory already exists: {output_dir}")
+
+        report_path = os.path.join(output_dir, f"research_report_{uuid.uuid4()}.txt")
         with open(report_path, "w") as f: 
             f.write(report) 
         return report_path
