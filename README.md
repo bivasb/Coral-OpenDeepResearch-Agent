@@ -41,7 +41,7 @@ Get the API Key:
 
 Create .env file in project root
 ```bash
-echo "OPENAI_API_KEY=your_openai_api_key\nLINKUP_API_KEY=your_linkup_api_key" > .env
+echo -e "OPENAI_API_KEY=your_openai_api_key\nLINKUP_API_KEY=your_linkup_api_key" > .env
 ```
 
 OR Directly export in terminal
