@@ -1,1 +1,0 @@
-open-deep-research==0.0.14
