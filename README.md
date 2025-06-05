@@ -34,15 +34,24 @@ uv sync
 This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
 
 ## Configure Environment Variables
+Get the API Key:
+[Linkup](https://app.linkup.so/api-keys)
+[OpenAI](https://platform.openai.com/api-keys)
+
+
 Create .env file in project root
 ```bash
-echo "OPENAI_API_KEY=your_openai_api_key" > .env
+echo "OPENAI_API_KEY=your_openai_api_key\nLINKUP_API_KEY=your_linkup_api_key" > .env
 ```
 
 OR Directly export in terminal
 
 ```bash
 export OPENAI_API_KEY=
+```
+
+```bash
+export LINKUP_API_KEY=
 ```
 
 ## Run Agent
