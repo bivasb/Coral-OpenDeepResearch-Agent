@@ -34,6 +34,13 @@ This command will read the `pyproject.toml` file and install all specified depen
 echo "OPENAI_API_KEY=your_openai_api_key" > .env
 ```
 
+OR
+
+```bash
+# Create .env file in project root
+export OPENAI_API_KEY=
+```
+
 ## Run Agent
 Run the agent using `uv`:
 ```bash
@@ -49,3 +56,4 @@ uv run python langchain_open_deep_research.py
 - **Name**: Suman
 - **Affiliation**: LangChain AI
 - **Contact**: suman@coralprotocol.org
+- **Affiliation**: [GitHub](https://github.com/langchain-ai/open_deep_research)
