@@ -29,15 +29,14 @@ uv sync
 This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
 
 ## Configure Environment Variables
+Create .env file in project root
 ```bash
-# Create .env file in project root
 echo "OPENAI_API_KEY=your_openai_api_key" > .env
 ```
 
-OR
+OR Directly export in terminal
 
 ```bash
-# Directly export in terminal
 export OPENAI_API_KEY=
 ```
 
