@@ -10,7 +10,12 @@ The Open Deep Research agent is an open-source research assistant that automates
 - **Date added**: June 4, 2025
 - **License**: MIT 
 
-## Install Dependencies
+## Clone & Install Dependencies
+Clone the repository:
+```bash
+git clone https://github.com/Coral-Protocol/Coral-OpenDeepResearch-Agent.git
+```
+
 Navigate to the project directory:
 ```bash
 cd Coral-OpenDeepResearch-Agent
