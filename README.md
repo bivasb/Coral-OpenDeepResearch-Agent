@@ -37,7 +37,7 @@ echo "OPENAI_API_KEY=your_openai_api_key" > .env
 OR
 
 ```bash
-# Create .env file in project root
+# Directly export in terminal
 export OPENAI_API_KEY=
 ```
 
