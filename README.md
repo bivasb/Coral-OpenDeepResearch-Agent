@@ -23,9 +23,12 @@ This agent runs on Coral Server, follow the instrcutions below to run the server
 ```bash
 git clone https://github.com/Coral-Protocol/coral-server.git
 ```
+
+Navigate to the project directory:
 ```bash
 cd coral-server
 ```
+Run the server
 ```bash
 cd ./gradlew run
 ```
@@ -39,7 +42,7 @@ If you are trying to run Open Deep Research agent and require an input, you can 
 ```bash
 git clone https://github.com/Coral-Protocol/Coral-Interface-Agent.git
 ```
-
+Navigate to the project directory:
 ```bash
 cd Coral-Interface-Agent
 ```
