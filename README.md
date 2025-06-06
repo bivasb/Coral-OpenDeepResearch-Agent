@@ -71,4 +71,3 @@ uv run python langchain_open_deep_research.py
 - **Name**: Suman Deb
 - **Affiliation**: LangChain AI
 - **Contact**: suman@coralprotocol.org
-- **Affiliation**: [GitHub](https://github.com/langchain-ai/open_deep_research)
