@@ -17,6 +17,8 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 1. Run [Coral Server](https://github.com/Coral-Protocol/coral-server)
 <details>
+
+
 This agent runs on Coral Server, follow the instrcutions below to run the server. In a new terminal clone the repository:
 
 
@@ -36,6 +38,8 @@ cd ./gradlew run
 
 2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
+
+
 If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the Interface Agent on the Coral Server. In a new terminal clone the repository:
 
 
