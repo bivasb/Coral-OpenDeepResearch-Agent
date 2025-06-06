@@ -17,7 +17,7 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 1. Run [Coral Server](https://github.com/Coral-Protocol/coral-server)
 <details>
-This agent run on Coral Server, in a new terminal follow the instrcutions below to run the server:
+This agent runs on Coral Server, follow the instrcutions below to run the server:
 
 In a new terminal clone the repository:
 ```bash
