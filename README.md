@@ -32,7 +32,7 @@ cd coral-server
 ```
 Run the server
 ```bash
-cd ./gradlew run
+./gradlew run
 ```
 </details>
 
@@ -109,17 +109,7 @@ Get the API Key:
 
 Create .env file in project root
 ```bash
-echo -e "OPENAI_API_KEY=your_openai_api_key\nLINKUP_API_KEY=your_linkup_api_key" > .env
-```
-
-OR Directly export in terminal
-
-```bash
-export OPENAI_API_KEY=
-```
-
-```bash
-export LINKUP_API_KEY=
+cp -r .env_sample .env
 ```
 
 ## Run Agent
