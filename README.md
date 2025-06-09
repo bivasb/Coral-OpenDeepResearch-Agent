@@ -130,7 +130,7 @@ uv run python langchain_open_deep_research.py
 
 ## Example Output
 ```
-(Sample too big to post, check temp folder)
+The research report will be displayed directly in the console output when you run the agent.
 ```
 
 ## Creator Details

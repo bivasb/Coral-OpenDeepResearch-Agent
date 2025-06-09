@@ -56,24 +56,17 @@ class OpenDeepResearch:
         # Step 3: Get final report
         final_state = graph.get_state(thread)
         report = final_state.values.get("final_report")
+        
+        # Check if report was generated successfully
+        if not report:
+            raise ValueError("No report was generated. Please check the topic and try again.")
 
-        # Define the directory and ensure it exists
-        output_dir = "temp"
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-            print(f"Created directory: {output_dir}")
-        else:
-            print(f"Directory already exists: {output_dir}")
-
-        report_path = os.path.join(output_dir, f"research_report_{uuid.uuid4()}.txt")
-        with open(report_path, "w") as f: 
-            f.write(report) 
-        return report_path
+        return report
 
 
 if __name__ == "__main__":
     topic = "What is Model Context Protocol?"
     research = OpenDeepResearch()
-    report_path = asyncio.run(research.generate_research_report(topic))
-    print("\n📄 FINAL REPORT PATH:\n")
-    print(report_path)
+    report = asyncio.run(research.generate_research_report(topic))
+    print("\n📄 FINAL REPORT:\n")
+    print(report)
