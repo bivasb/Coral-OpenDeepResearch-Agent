@@ -82,7 +82,6 @@ This command will read the `pyproject.toml` file and install all specified depen
 
 </details>
  
-----------------------------------------
 
 ### 2. Configure Environment Variables
 
