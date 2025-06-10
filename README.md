@@ -109,7 +109,7 @@ Get the API Key:
 [OpenAI](https://platform.openai.com/api-keys)
 
 
-Create .env file in project root
+2.1. Create .env file in project root
 <details>
 
 ```bash
@@ -119,7 +119,7 @@ cp -r .env_sample .env
 
 ### 3. Run Agent
 
-Run the agent using `uv`:
+3.1. Run the agent using `uv`:
 
 <details>
 
@@ -130,7 +130,7 @@ uv run python langchain_open_deep_research.py
 
 ### 4. Example
 
-Input
+4.1. Input
 
 <details>
 
@@ -139,7 +139,7 @@ Write me a report on Model Context Protocol.
 ```
 </details>
 
-Output
+4.2. Output
 <details>
 
 ```bash
