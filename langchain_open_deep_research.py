@@ -87,7 +87,7 @@ Execute this workflow continuously to serve research requests from other agents.
     return AgentExecutor(agent=agent, tools=combined_tools, verbose=True)
 
 async def main():
-    max_retries = 3
+    max_retries = 300
     for attempt in range(max_retries):
         try:
             async with MultiServerMCPClient(
