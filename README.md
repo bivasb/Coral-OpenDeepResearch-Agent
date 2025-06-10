@@ -16,10 +16,10 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 ## 1. Clone & Install Dependencies
 
-<details>
+
 
 - Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
-
+<details>
 
 If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the Interface Agent on the Coral Server. In a new terminal clone the repository:
 
@@ -50,9 +50,11 @@ Run the agent using `uv`:
 ```bash
 uv run python 0-langchain-interface.py
 ```
+</details>
 
 - Agent Installation
 
+<details>
 
 In a new terminal clone the repository:
 ```bash
