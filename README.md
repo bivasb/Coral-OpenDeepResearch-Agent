@@ -2,12 +2,8 @@
 
 The Open Deep Research agent is an open-source AI assistant that automates in-depth research and report generation via multi-agent workflows, supporting web search, structured reporting, human feedback, and API/LLM integration.
 
----
-
 ## Responsibility
 The Open Deep Research agent is an open-source research assistant that automates comprehensive report generation using a graph-based workflow or multi-agent architecture. It can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs.
-
----
 
 ## Details
 - **Framework**: LangChain
@@ -16,8 +12,6 @@ The Open Deep Research agent is an open-source research assistant that automates
 - **Date added**: June 4, 2025
 - **Reference**: [Open Deep Research Repo](https://github.com/langchain-ai/open_deep_research)
 - **License**: MIT 
-
----
 
 ## Use the agent
 
@@ -110,6 +104,10 @@ This command will read the `pyproject.toml` file and install all specified depen
 </details>
 
 ---
+
+--
+
+<hr style="border: 0; border-top: 1px solid #eee; margin: 24px 0;" />
 
 ### 2. Configure Environment Variables
 Get the API Key:
