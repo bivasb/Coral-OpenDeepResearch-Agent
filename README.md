@@ -102,8 +102,7 @@ uv sync
 This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
 
 </details>
-
--   
+ 
 
 ### 2. Configure Environment Variables
 Get the API Key:
@@ -119,7 +118,6 @@ cp -r .env_sample .env
 ```
 </details>
 
----
 
 ### 3. Run Agent
 
@@ -132,7 +130,6 @@ uv run python langchain_open_deep_research.py
 ```
 </details>
 
----
 
 ### 4. Example
 
@@ -153,7 +150,6 @@ The research report will be displayed directly in the console output when you ru
 ```
 </details>
 
----
 
 ## Creator Details
 - **Name**: Suman Deb
