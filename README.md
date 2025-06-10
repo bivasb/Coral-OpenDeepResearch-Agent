@@ -132,11 +132,14 @@ uv run python langchain_open_deep_research.py
 ```bash
 Write me a report on Model Context Protocol.
 ```
+</details>
 
 7. Output
+<details>
 ```
 The research report will be displayed directly in the console output when you run the agent.
 ```
+</details>
 
 ## Creator Details
 - **Name**: Suman Deb
