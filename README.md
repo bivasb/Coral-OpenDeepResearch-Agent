@@ -107,18 +107,33 @@ Get the API Key:
 [OpenAI](https://platform.openai.com/api-keys)
 
 
-Create .env file in project root
+4. Create .env file in project root
+<details>
 ```bash
 cp -r .env_sample .env
 ```
+</details>
 
 ## Run Agent
-Run the agent using `uv`:
+
+5. Run the agent using `uv`:
+
+<details>
 ```bash
 uv run python langchain_open_deep_research.py
 ```
+</details>
 
-## Example Output
+## Example
+
+6. Input
+
+<details>
+```bash
+Write me a report on Model Context Protocol.
+```
+
+7. Output
 ```
 The research report will be displayed directly in the console output when you run the agent.
 ```
