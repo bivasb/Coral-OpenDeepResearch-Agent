@@ -14,7 +14,9 @@ The Open Deep Research agent is an open-source research assistant that automates
 - **License**: MIT 
 
 
-## 1. Clone & Install Dependencies
+## Use the Agent  
+
+### 1. Clone & Install Dependencies
 
 
 
@@ -81,7 +83,7 @@ This command will read the `pyproject.toml` file and install all specified depen
 </details>
  
 
-## 2. Configure Environment Variables
+### 2. Configure Environment Variables
 
 <details>
 Get the API Key:
@@ -97,7 +99,7 @@ cp -r .env_sample .env
 </details>
 
 
-## 3. Run Agent
+### 3. Run Agent
 
 <details>
 
@@ -109,7 +111,7 @@ uv run python langchain_open_deep_research.py
 </details>
 
 
-## 4. Example
+### 4. Example
 
 <details>
 
