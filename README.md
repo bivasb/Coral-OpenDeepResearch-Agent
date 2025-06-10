@@ -16,7 +16,7 @@ The Open Deep Research agent is an open-source research assistant that automates
 ## Clone & Install Dependencies
 
 1. Run [Coral Server](https://github.com/Coral-Protocol/coral-server) (Expand drop-down below)
-<!-- <details> -->
+<details>
 
 
 This agent runs on Coral Server, follow the instrcutions below to run the server. In a new terminal clone the repository:
@@ -34,10 +34,10 @@ Run the server
 ```bash
 ./gradlew run
 ```
-<!-- </details> -->
+</details>
 
-2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
-<!-- <details> -->
+2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) (Expand drop-down below)
+<details>
 
 
 If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the Interface Agent on the Coral Server. In a new terminal clone the repository:
@@ -70,12 +70,12 @@ Run the agent using `uv`:
 uv run python 0-langchain-interface.py
 ```
 
-<!-- </details> -->
+</details>
 
 
-3. Agent Installation
+3. Agent Installation (Expand drop-down below)
 
-<!-- <details> -->
+<details>
 
 In a new terminal clone the repository:
 ```bash
@@ -99,7 +99,7 @@ uv sync
 
 This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
 
-<!-- </details> -->
+</details>
 
 ## Configure Environment Variables
 Get the API Key:
