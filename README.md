@@ -109,6 +109,7 @@ Get the API Key:
 
 Create .env file in project root
 <details>
+
 ```bash
 cp -r .env_sample .env
 ```
@@ -119,6 +120,7 @@ cp -r .env_sample .env
 Run the agent using `uv`:
 
 <details>
+
 ```bash
 uv run python langchain_open_deep_research.py
 ```
@@ -129,6 +131,7 @@ uv run python langchain_open_deep_research.py
 Input
 
 <details>
+
 ```bash
 Write me a report on Model Context Protocol.
 ```
@@ -136,7 +139,8 @@ Write me a report on Model Context Protocol.
 
 Output
 <details>
-```
+
+```bash
 The research report will be displayed directly in the console output when you run the agent.
 ```
 </details>
