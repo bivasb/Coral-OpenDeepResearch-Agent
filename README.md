@@ -36,7 +36,7 @@ Run the server
 ```
 </details>
 
-Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) (Expand drop-down below)
+Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
 
 
