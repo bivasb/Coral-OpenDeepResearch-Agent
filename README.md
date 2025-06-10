@@ -103,11 +103,7 @@ This command will read the `pyproject.toml` file and install all specified depen
 
 </details>
 
----
-
---
-
-<hr style="border: 0; border-top: 1px solid #eee; margin: 24px 0;" />
+-   
 
 ### 2. Configure Environment Variables
 Get the API Key:
