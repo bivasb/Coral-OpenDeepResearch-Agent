@@ -16,28 +16,7 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 ## 1. Clone & Install Dependencies
 
-1.1. Run [Coral Server](https://github.com/Coral-Protocol/coral-server) (Expand drop-down below)
-<details>
-
-
-This agent runs on Coral Server, follow the instrcutions below to run the server. In a new terminal clone the repository:
-
-
-```bash
-git clone https://github.com/Coral-Protocol/coral-server.git
-```
-
-Navigate to the project directory:
-```bash
-cd coral-server
-```
-Run the server
-```bash
-./gradlew run
-```
-</details>
-
-1.2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
+Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
 
 
@@ -74,7 +53,7 @@ uv run python 0-langchain-interface.py
 </details>
 
 
-1.3. Agent Installation
+Agent Installation
 
 <details>
 
@@ -109,7 +88,7 @@ Get the API Key:
 [OpenAI](https://platform.openai.com/api-keys)
 
 
-2.1. Create .env file in project root
+Create .env file in project root
 <details>
 
 ```bash
@@ -132,17 +111,15 @@ uv run python langchain_open_deep_research.py
 
 ## 4. Example
 
-4.1. Input
 
 <details>
+
+Input:
 
 ```bash
 Write me a report on Model Context Protocol.
 ```
-</details>
-
-4.2. Output
-<details>
+Output:
 
 ```bash
 The research report will be displayed directly in the console output when you run the agent.
