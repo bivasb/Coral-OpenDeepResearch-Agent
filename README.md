@@ -16,8 +16,9 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 ## 1. Clone & Install Dependencies
 
-Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
+
+- Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 
 
 If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the Interface Agent on the Coral Server. In a new terminal clone the repository:
@@ -50,12 +51,8 @@ Run the agent using `uv`:
 uv run python 0-langchain-interface.py
 ```
 
-</details>
+- Agent Installation
 
-
-Agent Installation
-
-<details>
 
 In a new terminal clone the repository:
 ```bash
@@ -83,13 +80,14 @@ This command will read the `pyproject.toml` file and install all specified depen
  
 
 ## 2. Configure Environment Variables
+
+<details>
 Get the API Key:
 [Linkup](https://app.linkup.so/api-keys)
 [OpenAI](https://platform.openai.com/api-keys)
 
 
 Create .env file in project root
-<details>
 
 ```bash
 cp -r .env_sample .env
@@ -99,9 +97,9 @@ cp -r .env_sample .env
 
 ## 3. Run Agent
 
-3.1. Run the agent using `uv`:
-
 <details>
+
+Run the agent using `uv`:
 
 ```bash
 uv run python langchain_open_deep_research.py
@@ -110,7 +108,6 @@ uv run python langchain_open_deep_research.py
 
 
 ## 4. Example
-
 
 <details>
 
