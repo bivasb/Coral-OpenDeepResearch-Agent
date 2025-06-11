@@ -86,7 +86,7 @@ cp -r utils/sse.py .venv/lib/python3.13/site-packages/mcp/client/sse.py
 
 OR Copy this for windows
 ```bash
-cp -r utils/sse.py .venv\Lib\site-packages\mcp\client\sse.py
+cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
 ```
 
 </details>
