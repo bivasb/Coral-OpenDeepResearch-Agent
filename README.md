@@ -75,12 +75,12 @@ pip install uv
 
 Install dependencies from `pyproject.toml` using `uv`:
 ```bash
-uv sync
+uv sync --active
 ```
 
 Copy the client sse.py from utils to mcp package
 ```bash
-cp -r utils/sse.py .venv/lib/python3.13/site-packages/mcp/client/sse.py
+uv run python -c "import shutil, os; os.makedirs('.venv/lib/python3.13/site-packages/mcp/client', exist_ok=True); shutil.copy('utils/sse.py', '.venv/lib/python3.13/site-packages/mcp/client/sse.py')"
 ```
 
 This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
