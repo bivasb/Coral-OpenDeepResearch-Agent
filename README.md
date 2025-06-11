@@ -91,6 +91,7 @@ This command will read the `pyproject.toml` file and install all specified depen
 ### 2. Configure Environment Variables
 
 <details>
+ 
 Get the API Key:
 [Linkup](https://app.linkup.so/api-keys)
 [OpenAI](https://platform.openai.com/api-keys)
