@@ -40,7 +40,7 @@ pip install uv
 ```
 Install dependencies from `pyproject.toml` using `uv`:
 ```bash
-uv sync
+uv sync --active
 ```
 
 Configure API Key
