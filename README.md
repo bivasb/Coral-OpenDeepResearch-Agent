@@ -51,9 +51,9 @@ cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
 
 <details>
  
-Get the API Key:  
-[Linkup](https://app.linkup.so/api-keys)  
-[OpenAI](https://platform.openai.com/api-keys)  
+Get the API Key:
+[Linkup](https://app.linkup.so/api-keys) || 
+[OpenAI](https://platform.openai.com/api-keys)
 
 
 ```bash
