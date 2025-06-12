@@ -19,74 +19,31 @@ The Open Deep Research agent is an open-source research assistant that automates
 ### 1. Clone & Install Dependencies
 
 
-
-Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
 
-If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the Interface Agent on the Coral Server. In a new terminal clone the repository:
+Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system.  
+
+If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) on the Coral Server. In a new terminal clone the repository:  
 
 
 ```bash
-git clone https://github.com/Coral-Protocol/Coral-Interface-Agent.git
-```
-Navigate to the project directory:
-```bash
-cd Coral-Interface-Agent
-```
-
-Install `uv`:
-```bash
-pip install uv
-```
-Install dependencies from `pyproject.toml` using `uv`:
-```bash
-uv sync --active
-```
-
-Configure API Key
-```bash
-export OPENAI_API_KEY=
-```
-
-Run the agent using `uv`:
-```bash
-uv run python 0-langchain-interface.py
-```
-</details>
-
-Agent Installation
-
-<details>
-
-In a new terminal clone the repository:
-```bash
+# In a new terminal clone the repository:
 git clone https://github.com/Coral-Protocol/Coral-OpenDeepResearch-Agent.git
-```
 
-Navigate to the project directory:
-```bash
+# Navigate to the project directory:
 cd Coral-OpenDeepResearch-Agent
-```
 
-Install `uv`:
-```bash
+# Install `uv`:
 pip install uv
-```
 
-Install dependencies from `pyproject.toml` using `uv`:
-```bash
+# Install dependencies from `pyproject.toml` using `uv`:
 uv sync --active
-```
-This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
 
-Copy the client sse.py from utils to mcp package
-```bash
+#Copy the client sse.py from utils to mcp package (Linux/ Mac)
 cp -r utils/sse.py .venv/lib/python3.13/site-packages/mcp/client/sse.py
-```
-
-OR Copy this for windows
-```bash
+# OR Copy this for Windows
 cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
+
 ```
 
 </details>
