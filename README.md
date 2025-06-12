@@ -36,10 +36,11 @@ cd Coral-OpenDeepResearch-Agent
 pip install uv
 
 # Install dependencies from `pyproject.toml` using `uv`:
-uv sync --active
+uv sync
 
-#Copy the client sse.py from utils to mcp package (Linux/ Mac)
+# Copy the client sse.py from utils to mcp package (Linux/ Mac)
 cp -r utils/sse.py .venv/lib/python3.13/site-packages/mcp/client/sse.py
+
 # OR Copy this for Windows
 cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
 
@@ -52,14 +53,13 @@ cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
 
 <details>
  
-Get the API Key:
-[Linkup](https://app.linkup.so/api-keys)
-[OpenAI](https://platform.openai.com/api-keys)
+Get the API Key:  
+- [Linkup](https://app.linkup.so/api-keys)  
+- [OpenAI](https://platform.openai.com/api-keys)  
 
-
-Create .env file in project root
 
 ```bash
+# Create .env file in project root
 cp -r .env_sample .env
 ```
 </details>
@@ -69,9 +69,8 @@ cp -r .env_sample .env
 
 <details>
 
-Run the agent using `uv`:
-
 ```bash
+Run the agent using `uv`:
 uv run python langchain_open_deep_research.py
 ```
 </details>
@@ -81,14 +80,12 @@ uv run python langchain_open_deep_research.py
 
 <details>
 
-Input:
 
 ```bash
+# Input:
 Write me a report on Model Context Protocol.
-```
-Output:
 
-```bash
+#Output:
 The research report will be displayed directly in the console output when you run the agent.
 ```
 </details>
