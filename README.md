@@ -21,9 +21,7 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 <details>  
 
-Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system.  
-
-If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) on the Coral Server.  
+Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system. If you are trying to run Open Deep Research agent and require an input, you can either create your agent which communicates on the coral server or run and register the [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) on the Coral Server.  
 
 ```bash
 # In a new terminal clone the repository:
