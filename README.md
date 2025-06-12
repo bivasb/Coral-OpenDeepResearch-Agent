@@ -70,7 +70,7 @@ cp -r .env_sample .env
 <details>
 
 ```bash
-Run the agent using `uv`:
+# Run the agent using `uv`:
 uv run python langchain_open_deep_research.py
 ```
 </details>
