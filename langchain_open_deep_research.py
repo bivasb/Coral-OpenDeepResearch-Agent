@@ -16,9 +16,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 load_dotenv()
 
-base_url = os.getenv("CORAL_SERVER_URL")
+base_url = os.getenv("CORAL_CONNECTION_URL")
 params = {
-    "waitForAgents": 2,
+    "waitForAgents": 1,
     "agentId": "open_deepresearch_agent",
     "agentDescription": "The Open Deep Research agent is an open-source research assistant that automates comprehensive report generation using a graph-based workflow or multi-agent architecture. "
     "It can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs."
@@ -29,7 +29,7 @@ MCP_SERVER_URL = f"{base_url}?{query_string}"
 async def odr_tool_async(topic: str):
     research = OpenDeepResearch()
     report = await research.generate_research_report(topic)
-    return (report, report)  # Return tuple of (content, artifact)
+    return (report, report)
 
 def get_tools_description(tools):
     return "\n".join(
