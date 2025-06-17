@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 load_dotenv()
 
-base_url = "http://localhost:5555/devmode/exampleApplication/privkey/session1/sse"
+base_url = os.getenv("CORAL_SERVER_URL")
 params = {
     "waitForAgents": 2,
     "agentId": "open_deepresearch_agent",
