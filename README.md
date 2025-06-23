@@ -13,6 +13,34 @@ The Open Deep Research agent is an open-source research assistant that automates
 - **Reference**: [Open Deep Research Repo](https://github.com/langchain-ai/open_deep_research)
 - **License**: MIT 
 
+## Use the Agent in Orchestration
+You will need to have API keys from [OpenAI](https://platform.openai.com/api-keys).
+
+### Executable Agent Definition 
+```yaml
+  coral-research:
+    options:
+      - name: "OPENAI_API_KEY"
+        type: "string"
+        description: "OpenAI API Key for OpenDeepResearch agent"
+      - name: "LINKUP_API_KEY"
+        type: "string"
+        description: "LinkUp API Key for OpenDeepResearch agent"
+    runtime:
+      type: "executable"
+      command:
+        [
+          "bash",
+          "-c",
+          "cd ../Coral-OpenDeepResearch-Agent && uv sync && uv run python langchain_open_deep_research.py",
+        ]
+      environment:
+        - name: "OPENAI_API_KEY"
+          from: "OPENAI_API_KEY"
+        - name: "LINKUP_API_KEY"
+          from: "LINKUP_API_KEY"
+```
+
 
 ## Use the Agent  
 
