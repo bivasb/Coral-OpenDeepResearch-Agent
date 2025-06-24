@@ -53,7 +53,7 @@ You will need to have API keys from [OpenAI](https://platform.openai.com/api-key
         description: "LinkUp API Key. Get from https://linkup.so/"
     runtime:
       type: "docker"
-      image: "sd2879/coral-opendeepresearch:latest"
+      image: "coralprotocol/coral-opendeepresearch:latest"
       environment:
         - name: "OPENAI_API_KEY"
           from: "OPENAI_API_KEY"
