@@ -96,12 +96,17 @@ registry:
       - name: "API_KEY"
         type: "string"
         description: "API key for the service"
+      - name: "LINKUP_API_KEY"
+        type: "string"
+        description: "Linkup API key for the service"
     runtime:
       type: "executable"
       command: ["bash", "-c", "${PROJECT_DIR}/run_agent.sh main.py"]
       environment:
         - name: "API_KEY"
           from: "API_KEY"
+        - name: "LINKUP_API_KEY"
+          from: "LINKUP_API_KEY"
         - name: "MODEL_NAME"
           value: "gpt-4.1"
         - name: "MODEL_PROVIDER"
