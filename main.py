@@ -129,7 +129,7 @@ async def main():
 
     runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
     
-    agent_executor = await create_agent(coral_tools, agent_tools, runtime)
+    agent_executor = await create_agent(coral_tools, agent_tools)
 
     while True:
         try:
