@@ -91,7 +91,7 @@ applications:
       - "priv"
 
 registry:
-  interface:
+  opendeepresearch_agent:
     options:
       - name: "API_KEY"
         type: "string"
