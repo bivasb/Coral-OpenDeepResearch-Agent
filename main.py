@@ -1,7 +1,5 @@
-import asyncio
-import os
-import json
 import logging
+import os, json, asyncio, traceback
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import init_chat_model
@@ -22,8 +20,7 @@ agentID = os.getenv("CORAL_AGENT_ID")
 params = {
     # "waitForAgents": 1,
     "agentId": agentID,
-    "agentDescription": "The Open Deep Research agent is an open-source research assistant that automates comprehensive report generation using a graph-based workflow or multi-agent architecture. "
-    "It can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs."
+    "agentDescription": "Open Deep Research agent can perform in-depth web searches, generate structured reports, support human-in-the-loop feedback, and integrate with APIs like Tavily, Linkup, DuckDuckGo, and Azure AI Search, using customizable LLMs for tailored, high-quality research outputs."
 }
 query_string = urllib.parse.urlencode(params)
 MCP_SERVER_URL = f"{base_url}?{query_string}"
@@ -39,7 +36,7 @@ def get_tools_description(tools):
         for tool in tools
     )
 
-async def create_odr_agent(coral_tools, agent_tools):
+async def create_agent(coral_tools, agent_tools):
     coral_tools_description = get_tools_description(coral_tools)
     agent_tools_description = get_tools_description(agent_tools)
     combined_tools = coral_tools + agent_tools
@@ -78,34 +75,39 @@ Execute this workflow continuously to serve research requests from other agents.
     ])
 
     model = init_chat_model(
-        model="gpt-4.1-2025-04-14",
-        model_provider="openai",
-        api_key=os.getenv("OPENAI_API_KEY"),
-        temperature=0.3,
-        max_tokens=16000
+        model=os.getenv("MODEL_NAME", "gpt-4.1"),
+        model_provider=os.getenv("MODEL_PROVIDER", "openai"),
+        api_key=os.getenv("API_KEY"),
+        temperature=os.getenv("MODEL_TEMPERATURE", "0.1"),
+        max_tokens=os.getenv("MODEL_TOKEN", "8000")
     )
 
     agent = create_tool_calling_agent(model, combined_tools, prompt)
     return AgentExecutor(agent=agent, tools=combined_tools, verbose=True)
 
-async def main():
-    max_retries = 300
 
-    for attempt in range(max_retries):
-        client = MultiServerMCPClient(
-            connections={
-                "coral": {
-                    "transport": "sse",
-                    "url": MCP_SERVER_URL,
-                    "timeout": 300,
-                    "sse_read_timeout": 300,
-                }
+
+
+async def main():
+    CORAL_SERVER_URL = f"{base_url}?{query_string}"
+    logger.info(f"Connecting to Coral Server: {CORAL_SERVER_URL}")
+
+    client = MultiServerMCPClient(
+        connections={
+            "coral": {
+                "transport": "sse",
+                "url": CORAL_SERVER_URL,
+                "timeout": 600,
+                "sse_read_timeout": 600,
             }
-        )
-        try:
-            logger.info(f"Attempt {attempt + 1}: connecting to MCP at {MCP_SERVER_URL}")
-            coral_tools = await client.get_tools()
-            agent_tools = [
+        }
+    )
+    logger.info("Coral Server Connection Established")
+
+    coral_tools = await client.get_tools(server_name="coral")
+    logger.info(f"Coral tools count: {len(coral_tools)}")
+
+    agent_tools = [
                 Tool(
                     name="open_deepresearch",
                     func=None,
@@ -125,28 +127,20 @@ async def main():
                 )
             ]
 
-            agent = await create_odr_agent(coral_tools, agent_tools)
-            await agent.ainvoke({})
+    runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
+    
+    agent_executor = await create_agent(coral_tools, agent_tools, runtime)
 
-            return
-
-        except ClosedResourceError as e:
-            logger.error(f"ClosedResourceError on attempt {attempt + 1}: {e}")
-            if attempt < max_retries - 1:
-                logger.info("Retrying in 5 seconds...")
-                await asyncio.sleep(5)
-            else:
-                logger.error("Max retries reached. Exiting.")
-                raise
-
+    while True:
+        try:
+            logger.info("Starting new agent invocation")
+            await agent_executor.ainvoke({"agent_scratchpad": []})
+            logger.info("Completed agent invocation, restarting loop")
+            await asyncio.sleep(1)
         except Exception as e:
-            logger.error(f"Unexpected error on attempt {attempt + 1}: {e}")
-            if attempt < max_retries - 1:
-                logger.info("Retrying in 5 seconds...")
-                await asyncio.sleep(5)
-            else:
-                logger.error("Max retries reached. Exiting.")
-                raise
+            logger.error(f"Error in agent loop: {str(e)}")
+            logger.error(traceback.format_exc())
+            await asyncio.sleep(5)
 
 if __name__ == "__main__":
     asyncio.run(main())
