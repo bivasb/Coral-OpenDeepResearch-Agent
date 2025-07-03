@@ -23,10 +23,10 @@ The Open Deep Research agent is an open-source research assistant that automates
 
 ```bash
 # In a new terminal clone the repository:
-git clone https://github.com/Coral-Protocol/Coral-Interface-Agent.git
+git clone https://github.com/Coral-Protocol/Coral-OpenDeepResearch-Agent.git
 
 # Navigate to the project directory:
-cd Coral-Interface-Agent
+cd Coral-OpenDeepResearch-Agent
 
 # Download and run the UV installer, setting the installation directory to the current one
 curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=$(pwd) sh
