@@ -141,21 +141,6 @@ uv run python main.py
 
 ```bash
 # Input:
-Agent: How can I assist you today?
-
-#Output:
-The agent will interact with you directly in the console and coordinate with other agents as needed.
-```
-</details>
-
-
-## Example
-
-<details>
-
-
-```bash
-# Input:
 Write me a report on Model Context Protocol.
 
 #Output:
