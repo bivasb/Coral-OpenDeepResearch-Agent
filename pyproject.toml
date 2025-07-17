@@ -13,4 +13,5 @@ dependencies = [
     "langchain-openai==0.3.26",
     "open-deep-research>=0.0.15",
     "requests>=2.32.3",
+    "uv>=0.7.17",
 ]
