@@ -8,7 +8,15 @@ from langgraph.types import Command
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "open_deep_research")))
 from graph import builder
 
-load_dotenv()
+runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
+if runtime == "devmode":
+    load_dotenv()
+
+if not os.environ.get("LINKUP_API_KEY"):
+    raise ValueError("LINKUP_API_KEY environment variable is not set")
+
+if not os.environ.get("OPENAI_API_KEY"):
+    raise ValueError("This agent runs only with OPEN AI and OPENAI_API_KEY environment variable is not set")
 
 class OpenDeepResearch:
     def __init__(self):
@@ -29,7 +37,7 @@ class OpenDeepResearch:
         memory = MemorySaver()
         graph = builder.compile(checkpointer=memory)
 
-        # Thread config like in notebook
+        # Thread config
         thread = {
             "configurable": {
                 "thread_id": str(uuid.uuid4()),
@@ -62,7 +70,6 @@ class OpenDeepResearch:
             raise ValueError("No report was generated. Please check the topic and try again.")
 
         return report
-
 
 if __name__ == "__main__":
     topic = "What is Model Context Protocol?"

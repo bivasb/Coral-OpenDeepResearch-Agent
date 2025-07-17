@@ -95,7 +95,7 @@ applications:
 registry:
   opendeepresearch_agent:
     options:
-      - name: "API_KEY"
+      - name: "OPENAI_API_KEY"
         type: "string"
         description: "API key for the service"
       - name: "LINKUP_API_KEY"
@@ -105,8 +105,8 @@ registry:
       type: "executable"
       command: ["bash", "-c", "${PROJECT_DIR}/run_agent.sh main.py"]
       environment:
-        - name: "API_KEY"
-          from: "API_KEY"
+        - name: "OPENAI_API_KEY"
+          from: "OPENAI_API_KEY"
         - name: "LINKUP_API_KEY"
           from: "LINKUP_API_KEY"
         - name: "MODEL_NAME"
