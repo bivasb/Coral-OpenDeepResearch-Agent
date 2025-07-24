@@ -124,8 +124,6 @@ async def main():
             response_format="content_and_artifact"
         )
     ]
-
-    runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
     
     agent_executor = await create_agent(coral_tools, agent_tools)
 
