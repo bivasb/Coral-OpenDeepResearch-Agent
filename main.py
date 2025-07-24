@@ -9,15 +9,20 @@ from dotenv import load_dotenv
 from anyio import ClosedResourceError
 import urllib.parse
 from odr import OpenDeepResearch 
+import tempfile
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-
 async def odr_tool_async(topic: str):
     research = OpenDeepResearch()
     report = await research.generate_research_report(topic)
-    return (report, report)
+    temp_dir = os.path.join(os.getcwd(), "temp")
+    os.makedirs(temp_dir, exist_ok=True)
+    report_path = os.path.join(temp_dir, "report.txt")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(report)
+    return (report, {"report_content": report, "report_path": report_path})
 
 def get_tools_description(tools):
     return "\n".join(
@@ -33,32 +38,22 @@ async def create_agent(coral_tools, agent_tools):
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
-            f"""You are a specialized research agent that integrates with Coral Server tools and provides comprehensive research capabilities.
+            f"""You are a specialized research agent interacting with the tools from Coral Server and having your own tools. Your task is to perform any instructions coming from any agent.
+                Follow these steps in order:
 
-CORE WORKFLOW:
-1. Always monitor for incoming requests using `wait_for_mentions` (timeoutMs: 30000)
-2. Extract thread_id and sender_id from received mentions from the 'wait_for_mentions' tool response
-3. Analyze the request content and determine appropriate tools to use for example if the request is a research report, use the open_deepresearch tool
-4. Send complete results back to the requesting agent using `send_message` tool and pass the thread_id and sender_id to the tool call you got from the `wait_for_mentions` tool response
-5. Handle errors gracefully by sending descriptive error messages
-6. Continue monitoring for new requests
+                1. Call wait_for_mentions from coral tools (timeoutMs: 30000) to receive mentions from other agents.
+                2. When you receive a mention, keep the thread ID and the sender ID.
+                3. Think about the content (instruction) of the message and check only from the list of your tools available for you to action.
+                4. Check the tool schema and make a plan in steps for the task you want to perform.
+                5. Only call the tools you need to perform for each step of the plan to complete the instruction in the content.
+                6. Think about the content and see if you have executed the instruction to the best of your ability and the tools. Make this your response as "answer".
+                7. Use send_message from coral tools to send a message in the same thread ID to the sender Id you received the mention from, with content: "answer" containing the report content and the file path where the report is saved.
+                8. If any error occurs, use send_message to send a message in the same thread ID to the sender Id you received the mention from, with content: "error".
+                9. Always respond back to the sender agent even if you have no answer or error.
+                10. Repeat the process from step 1.
 
-RESEARCH CAPABILITIES:
-- Use `open_deepresearch` tool for comprehensive research report generation
-- Return complete, unmodified research content to requesting agents
-- Handle research topics of any complexity or domain
-
-RESPONSE GUIDELINES:
-- Always respond with actual tool outputs, never placeholder text
-- Provide complete research reports without summarization
-- Send detailed error descriptions if tool execution fails
-- Maintain thread context throughout the conversation
-
-AVAILABLE TOOLS:
-Coral Tools: {coral_tools_description}
-Research Tools: {agent_tools_description}
-
-Execute this workflow continuously to serve research requests from other agents."""
+            These are the list of coral tools: {coral_tools_description}
+            These are the list of your tools: {agent_tools_description}."""
         ),
         ("placeholder", "{agent_scratchpad}")
     ])
@@ -74,11 +69,7 @@ Execute this workflow continuously to serve research requests from other agents.
     agent = create_tool_calling_agent(model, combined_tools, prompt)
     return AgentExecutor(agent=agent, tools=combined_tools, verbose=True)
 
-
-
-
 async def main():
-
     runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
 
     if runtime == "docker" or runtime == "executable":
@@ -115,24 +106,24 @@ async def main():
     logger.info(f"Coral tools count: {len(coral_tools)}")
 
     agent_tools = [
-                Tool(
-                    name="open_deepresearch",
-                    func=None,
-                    coroutine=odr_tool_async,
-                    description="Generates a comprehensive research report on a given topic using OpenDeepResearch. Returns the complete research report content with introduction, main body sections with research findings, and conclusions with structured elements.",
-                    args_schema={
-                        "properties": {
-                            "topic": {
-                                "type": "string",
-                                "description": "The topic for the research report"
-                            }
-                        },
-                        "required": ["topic"],
-                        "type": "object"
-                    },
-                    response_format="content_and_artifact"
-                )
-            ]
+        Tool(
+            name="open_deepresearch",
+            func=None,
+            coroutine=odr_tool_async,
+            description="Generates a comprehensive research report on a given topic using OpenDeepResearch. Saves the report to a temporary directory as report.txt and returns the complete research report content along with the file path.",
+            args_schema={
+                "properties": {
+                    "topic": {
+                        "type": "string",
+                        "description": "The topic for the research report"
+                    }
+                },
+                "required": ["topic"],
+                "type": "object"
+            },
+            response_format="content_and_artifact"
+        )
+    ]
 
     runtime = os.getenv("CORAL_ORCHESTRATION_RUNTIME", "devmode")
     
