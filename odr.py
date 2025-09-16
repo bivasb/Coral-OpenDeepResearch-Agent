@@ -15,8 +15,8 @@ if runtime == "devmode":
 if not os.environ.get("LINKUP_API_KEY"):
     raise ValueError("LINKUP_API_KEY environment variable is not set")
 
-if not os.environ.get("OPENAI_API_KEY"):
-    raise ValueError("This agent runs only with OPEN AI and OPENAI_API_KEY environment variable is not set")
+if not os.environ.get("DEEPSEEK_API_KEY"):
+    raise ValueError("This agent runs with DeepSeek and DEEPSEEK_API_KEY environment variable is not set")
 
 class OpenDeepResearch:
     def __init__(self):
@@ -42,10 +42,10 @@ class OpenDeepResearch:
             "configurable": {
                 "thread_id": str(uuid.uuid4()),
                 "search_api": "linkup",
-                "planner_provider": "openai",
-                "planner_model": "gpt-4o-mini",
-                "writer_provider": "openai",
-                "writer_model": "gpt-4o-mini",
+                "planner_provider": "deepseek",
+                "planner_model": "deepseek-chat",
+                "writer_provider": "deepseek",
+                "writer_model": "deepseek-chat",
                 "max_search_depth": 1,
                 "report_structure": self.REPORT_STRUCTURE,
             }

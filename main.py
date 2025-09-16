@@ -59,9 +59,9 @@ async def create_agent(coral_tools, agent_tools):
     ])
 
     model = init_chat_model(
-        model=os.getenv("MODEL_NAME", "gpt-4.1"),
-        model_provider=os.getenv("MODEL_PROVIDER", "openai"),
-        api_key=os.getenv("OPENAI_API_KEY"),
+        model=os.getenv("MODEL_NAME", "deepseek-chat"),
+        model_provider=os.getenv("MODEL_PROVIDER", "deepseek"),
+        api_key=os.getenv("DEEPSEEK_API_KEY"),
         temperature=os.getenv("MODEL_TEMPERATURE", "0.1"),
         max_tokens=os.getenv("MODEL_MAX_TOKENS", "8000"),
         base_url=os.getenv("MODEL_BASE_URL") if os.getenv("MODEL_BASE_URL") else None
